@@ -14,9 +14,12 @@ import {
   Pie,
   PieChart,
   ResponsiveContainer,
+  Scatter,
+  ScatterChart,
   Tooltip,
   XAxis,
   YAxis,
+  ZAxis,
 } from "recharts";
 
 const pieData = [
@@ -27,8 +30,8 @@ const Row2 = () => {
   const { palette } = useTheme();
   const { data: operationalData } = useGetKpisQuery();
   const { data: productData } = useGetProductsQuery();
-  // console.log(productData);
-  console.log(operationalData);
+   console.log(productData);
+  // console.log(operationalData);
   const pieColors = [palette.primary[800], palette.primary[300]];
   const operationalExpenses = useMemo(() => {
     return (
@@ -44,6 +47,20 @@ const Row2 = () => {
       )
     );
   }, [operationalData]);
+  const productExpenseData = useMemo(() => {
+    return (
+      productData &&
+      productData.map(
+        ({ _id,price,expense }) => {
+          return {
+            id:_id,
+            price:price,
+            expense:expense
+          };
+        }
+      )
+    );
+  }, [productData]);
   return (
     <>
       <Dashboardbox gridArea="d">
@@ -132,21 +149,69 @@ const Row2 = () => {
           </PieChart>
           <Box ml="-0.7rem" flexBasis="40%" textAlign="center">
             <Typography variant="h5">Target Sales</Typography>
-            <Typography m="0.3rem" variant="h3" color={palette.primary[300]}>83</Typography>
+            <Typography m="0.3rem" variant="h3" color={palette.primary[300]}>
+              83
+            </Typography>
             <Typography variant="h6">
               Finance goal of the campaign that is desired
             </Typography>
           </Box>
           <Box ml="-0.7rem" flexBasis="40%" textAlign="center">
             <Typography variant="h5">Target Sales</Typography>
-            <Typography m="0.3rem" variant="h3" color={palette.primary[300]}>83</Typography>
+            <Typography m="0.3rem" variant="h3" color={palette.primary[300]}>
+              83
+            </Typography>
             <Typography variant="h6">
               Finance goal of the campaign that is desired
             </Typography>
           </Box>
         </FlexBetween>
       </Dashboardbox>
-      <Dashboardbox gridArea="f"></Dashboardbox>
+      <Dashboardbox gridArea="f">
+      <Boxheader
+          title="Profit vs Revenue"
+          subtitle="Top line represents revenue, Bottom line represent Profit"
+          sidetext="+4%"
+        />
+        <ResponsiveContainer width="100%" height={200}>
+          <ScatterChart
+            margin={{
+              top: 20,
+              right: 20,
+              bottom: 20,
+              left: 20,
+            }}
+          >
+            <CartesianGrid stroke={palette.grey[800]} />
+            <XAxis
+              type="number"
+              dataKey="price"
+              name="price"
+              axisLine={false}
+              tickLine={false}
+              style={{ fontSize: "10px" }}
+              tickFormatter={(v) => `$${v}`}
+              
+            />
+            <YAxis
+              type="number"
+              dataKey="expense"
+              name="expense"
+              axisLine={false}
+              tickLine={false}
+              style={{ fontSize: "10px" }}
+              tickFormatter={(v) => `$${v}`}
+              
+            />
+            <ZAxis type="number" range={[20]} />
+
+            <Tooltip formatter={(v) => `$${v}`} />
+            <Scatter name="Product Expense Ration" 
+            data={productExpenseData}   
+            fill={palette.tertiary[500]} />
+          </ScatterChart>
+        </ResponsiveContainer>
+      </Dashboardbox>
     </>
   );
 };
