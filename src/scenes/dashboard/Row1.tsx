@@ -2,7 +2,7 @@ import { Boxheader } from "@/components/Boxheader";
 import Dashboardbox from "@/components/Dashboardbox";
 import { useGetKpisQuery } from "@/states/api";
 import { useTheme } from "@mui/material";
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import {
   Area,
   AreaChart,
@@ -12,16 +12,15 @@ import {
   Legend,
   Line,
   LineChart,
-  Rectangle,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
 
-type Props = {};
 
-const Row1 = (props: Props) => {
+
+const Row1 = () => {
   const { palette } = useTheme();
   const { data } = useGetKpisQuery();
   const revenueExpenses = useMemo(() => {
