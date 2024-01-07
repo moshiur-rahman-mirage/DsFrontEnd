@@ -1,5 +1,5 @@
 
-import { useTheme } from "@emotion/react";
+//import { useTheme } from "@emotion/react";
 import { Box, useMediaQuery } from "@mui/material";
 import Row1 from "./Row1";
 import Row2 from "./Row2";
@@ -53,7 +53,7 @@ const gridTemplateSmallScreen = `
 `;
 const Dashboard = () => {
   const isAboveMediumScreens = useMediaQuery("(min-width:1200px)");
-  const { palette } = useTheme();
+  // const { palette } = useTheme();
   return (
     <Box
       width="100%"
