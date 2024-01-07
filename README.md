@@ -1,8 +1,6 @@
 # Finance Dashboard : Youtube Tutorial Follow
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/moshiur-rahman-mirage/your-repository)](https://github.com/moshiur-rahman-mirage/your-repository/issues)
-[![GitHub stars](https://img.shields.io/github/stars/moshiur-rahman-mirage/your-repository)](https://github.com/moshiur-rahman-mirage/your-repository/stargazers)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 
 ## Overview
 
